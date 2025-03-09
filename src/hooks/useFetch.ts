@@ -20,3 +20,13 @@ function useFetch<T>(url: string) {
 }
 
 export default useFetch;
+
+// exemplo de como acessar usando o token de autenticação
+// const token = localStorage.getItem("jwt");
+
+// const response = await fetch("http://localhost:5000/api/protected", {
+//     method: "GET",
+//     headers: {
+//         Authorization: `Bearer ${token}`,
+//     },
+// });

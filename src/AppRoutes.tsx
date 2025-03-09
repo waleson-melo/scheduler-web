@@ -1,19 +1,35 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { Route, Routes, useNavigate } from "react-router";
 import Login from "@/pages/Login";
 import SignUP from "@/pages/SignUP";
 import NotFound from "@/pages/NotFound";
 import Home from "@/pages/Home";
+import ProtectedRoute from "@/components/common/ProtectedRoute";
+import { useEffect } from "react";
 
 function AppRoutes() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token && window.location.pathname === "/entrar") {
+      navigate("/");
+    }
+  }, [navigate]);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="entrar" element={<Login />} />
-        <Route path="cadastrar" element={<SignUP />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/entrar" element={<Login />} />
+      <Route path="/cadastrar" element={<SignUP />} />
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
