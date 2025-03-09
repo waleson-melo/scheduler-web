@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAr1pQhnEaQIfN0ZicjAUJLAqJ1WjMQjbA",
-  authDomain: "scheduler-4515d.firebaseapp.com",
-  projectId: "scheduler-4515d",
-  storageBucket: "scheduler-4515d.firebasestorage.app",
-  messagingSenderId: "392282355845",
-  appId: "1:392282355845:web:34f33f79812646d04491ec",
+  apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_APP_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
